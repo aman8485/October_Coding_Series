@@ -37,3 +37,26 @@ class Solution {
         return ans>=k;
     }
 }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3 - Adjacent Increasing Subarrays Detection II
+
+class Solution {
+    public int maxIncreasingSubarrays(List<Integer> arr) {
+        int n=arr.size();
+        int cl=1;
+        int pl=0;
+        int ans=0;
+        for(int i=1;i<n;i++){
+            if(arr.get(i)>arr.get(i-1)){
+                cl++;
+            }else{
+                pl=cl;
+                cl=1;
+            }
+            ans=Math.max(ans,Math.max(cl/2,Math.min(cl,pl)));
+
+        }
+        return ans;
+        
+    }
+}
